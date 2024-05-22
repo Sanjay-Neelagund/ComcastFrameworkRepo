@@ -25,7 +25,12 @@ public class HomePage {
 	private WebElement Morelink;
 	@FindBy(linkText = "Campaigns")
 	private WebElement Campaignslink;
+	@FindBy(linkText = "Products")
+	private WebElement productLink;
 	
+	public WebElement getProductLink() {
+		return productLink;
+	}
 	public WebElement getMorelink() {
 		return Morelink;
 	}
