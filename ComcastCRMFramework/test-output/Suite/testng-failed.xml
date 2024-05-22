@@ -1,24 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
+<suite thread-count="2" parallel="tests" name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
   <listeners>
     <listener class-name="Com.Comcast.crm.listenerutility.ListenerImplementclass"/>
   </listeners>
-  <test thread-count="5" name="Test(failed)">
+  <test thread-count="2" parallel="tests" name="Test(failed)">
     <classes>
       <class name="com.comcast.crm.organizationtest.CreateOrganizationTest">
         <methods>
           <include name="createOrganizationWithphonenumbertest"/>
           <include name="configBM"/>
-          <include name="createOrg"/>
           <include name="configAS"/>
           <include name="configAC"/>
           <include name="configBS"/>
           <include name="configBC"/>
-          <include name="createOrgWithIndustry"/>
           <include name="configAM"/>
         </methods>
       </class> <!-- com.comcast.crm.organizationtest.CreateOrganizationTest -->
     </classes>
   </test> <!-- Test(failed) -->
+  <test thread-count="2" parallel="tests" name="Test2(failed)">
+    <classes>
+      <class name="com.comcat.crm.contacttest.CreateContactTest">
+        <methods>
+          <include name="configBM"/>
+          <include name="configAS"/>
+          <include name="configAC"/>
+          <include name="configBS"/>
+          <include name="configBC"/>
+          <include name="createContactWithOrg"/>
+          <include name="configAM"/>
+        </methods>
+      </class> <!-- com.comcat.crm.contacttest.CreateContactTest -->
+    </classes>
+  </test> <!-- Test2(failed) -->
 </suite> <!-- Failed suite [Suite] -->
