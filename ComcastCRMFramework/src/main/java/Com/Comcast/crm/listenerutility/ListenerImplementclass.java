@@ -68,8 +68,7 @@ public  ExtentTest test;
 		String testName=result.getMethod().getMethodName();
 		String timestamp=new Date().toString().replace(" ", "_").replace(":", "_");
 		UtilityClassObject.getTest().addScreenCaptureFromBase64String(scrfile,testName+timestamp);
-		 test.addScreenCaptureFromBase64String(scrfile,testName+timestamp);
-		 test.log(Status.FAIL, result.getThrowable());
+		UtilityClassObject.getTest().log(Status.FAIL, result.getThrowable());
 	}
 
 	public void onTestSkipped(ITestResult result) {
