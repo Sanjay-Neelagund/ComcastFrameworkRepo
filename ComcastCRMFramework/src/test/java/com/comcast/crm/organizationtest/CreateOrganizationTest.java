@@ -1,7 +1,6 @@
 package com.comcast.crm.organizationtest;
 
 import org.testng.Assert;
-import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import com.aventstack.extentreports.Status;
@@ -12,7 +11,7 @@ import Com.Comcast.crm.ObjectRepositoryUtility.OrganizationInfoPage;
 import Com.Comcast.crm.ObjectRepositoryUtility.OrganizationPage;
 import Com.Comcast.crm.baseutility.BaseClass;
 import Com.Comcast.generic.webdriverutility.UtilityClassObject;
-@Listeners(Com.Comcast.crm.listenerutility.ListenerImplementclass.class)
+//@Listeners(Com.Comcast.crm.listenerutility.ListenerImplementclass.class)
 /**
  * Test class for Organization Module
  * @author Sanjay
@@ -79,6 +78,6 @@ public class CreateOrganizationTest extends BaseClass{
 		CreateNewOrganizationPage cp = new CreateNewOrganizationPage(driver);
 		cp.createOrg(orgName,phone);
 		String header = oip.getPhonemsg().getText();
-		Assert.assertEquals(header, phone);
+		Assert.assertEquals(header, orgName);
 		UtilityClassObject.getTest().log(Status.PASS, "Create organization with phone was created");	}
 }

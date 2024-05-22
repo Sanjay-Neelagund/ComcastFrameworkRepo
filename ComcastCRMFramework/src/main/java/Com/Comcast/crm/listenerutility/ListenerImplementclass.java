@@ -16,10 +16,11 @@ import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
 
+import Com.Comcast.crm.baseutility.BaseClass;
 import Com.Comcast.generic.webdriverutility.UtilityClassObject;
 
 public class ListenerImplementclass implements ITestListener,ISuiteListener {
-public	ExtentSparkReporter spark=null;
+public	ExtentSparkReporter spark;
 public	ExtentReports report;
 public  ExtentTest test;
 	
@@ -48,7 +49,7 @@ public  ExtentTest test;
 		test=report.createTest(testName);
 		UtilityClassObject.setTest(test);
 	    UtilityClassObject.getTest().log(Status.INFO, testName+"==Started==");
-		
+
 
 	}
 
@@ -63,13 +64,17 @@ public  ExtentTest test;
 		TakesScreenshot edriver = (TakesScreenshot)UtilityClassObject.getDriver();
 		UtilityClassObject.getTest().log(Status.FAIL, result.getMethod().getMethodName()+"==Failed==");
 		String scrfile=edriver.getScreenshotAs(OutputType.BASE64);
+		
 		String testName=result.getMethod().getMethodName();
 		String timestamp=new Date().toString().replace(" ", "_").replace(":", "_");
 		UtilityClassObject.getTest().addScreenCaptureFromBase64String(scrfile,testName+timestamp);
+		 test.addScreenCaptureFromBase64String(scrfile,testName+timestamp);
+		 test.log(Status.FAIL, result.getThrowable());
 	}
 
 	public void onTestSkipped(ITestResult result) {
-		// TODO Auto-generated method stub
+		String methodName=result.getMethod().getMethodName();
+		UtilityClassObject.getTest().log(Status.SKIP, methodName+"==Skipped");
 
 	}
 

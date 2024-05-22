@@ -6,6 +6,8 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
+import com.aventstack.extentreports.Status;
+
 import Com.Comcast.crm.ObjectRepositoryUtility.ContactInfoPage;
 import Com.Comcast.crm.ObjectRepositoryUtility.ContactPage;
 import Com.Comcast.crm.ObjectRepositoryUtility.CreateNewOrganizationPage;
@@ -13,8 +15,10 @@ import Com.Comcast.crm.ObjectRepositoryUtility.HomePage;
 import Com.Comcast.crm.ObjectRepositoryUtility.OrganizationInfoPage;
 import Com.Comcast.crm.ObjectRepositoryUtility.OrganizationPage;
 import Com.Comcast.crm.baseutility.BaseClass;
+import Com.Comcast.crm.listenerutility.ListenerImplementclass;
 import Com.Comcast.generic.fileutility.ExcelUtility;
 import Com.Comcast.generic.webdriverutility.JavaScriptUtility;
+import Com.Comcast.generic.webdriverutility.UtilityClassObject;
 
 
 public class CreateContactTest extends BaseClass{
@@ -23,6 +27,8 @@ public class CreateContactTest extends BaseClass{
 		int num=jlib.getRandomNumber();
 		String lastName = elib.getDataFromExcel("Contact", 1, 2)+num;
 		HomePage hp=new HomePage(driver);
+		UtilityClassObject.getTest().log(Status.INFO, "Navigated to HomePage");
+
 		hp.getContactsLink().click();
 
 
@@ -31,7 +37,10 @@ public class CreateContactTest extends BaseClass{
 		cc.getLastNameEdt().sendKeys(lastName);
 		cc.getSave().click();
 		String last=cc.getlastnameHeader().getText();
+		UtilityClassObject.getTest().log(Status.INFO, "Navigated to Contact infopage");
+
 		Assert.assertEquals(lastName,last); 
+		UtilityClassObject.getTest().log(Status.PASS, "Create contact passed");
 
 	}
 	@Test(groups = "RegressionSuite")
@@ -40,6 +49,7 @@ public class CreateContactTest extends BaseClass{
 		int num=jlib.getRandomNumber();
 		String lastName = elib.getDataFromExcel("Contact", 1, 2)+num;
 		HomePage hp=new HomePage(driver);
+		UtilityClassObject.getTest().log(Status.INFO, "Navigated to HomePage");
 		hp.getContactsLink().click();
 		ContactPage cc=new ContactPage(driver);
 		cc.getCreateNewContactBtn().click();
@@ -70,6 +80,8 @@ public class CreateContactTest extends BaseClass{
 		sa.assertEquals(lsDate,endDate);
 		//	System.out.println(endDate+" is Created");
 		sa.assertAll();
+		UtilityClassObject.getTest().log(Status.PASS, "Passed");
+
 	}
 
 	@Test
@@ -79,6 +91,7 @@ public class CreateContactTest extends BaseClass{
 		String orgName=elib.getDataFromExcel("Org", 1, 2)+num;
 		String lastName=elib.getDataFromExcel("Contact", 1, 2);
 		HomePage hp=new HomePage(driver);
+		UtilityClassObject.getTest().log(Status.INFO, "Navigated to HomePage");
 		hp.getOrganizationsLink().click();
 		OrganizationPage op=new OrganizationPage(driver);
 		op.getCreateNewOrgBtn().click();
@@ -103,12 +116,13 @@ public class CreateContactTest extends BaseClass{
 		wlib.switchToTabOnPartialURL(driver, "module=Contacts&action");
 		cnp.getSave().click();
 		ContactInfoPage cip=new ContactInfoPage(driver);
-
-
 		String last= cip.getLastNamehead().getText();
 
 		SoftAssert saAssert=new SoftAssert();
-		saAssert.assertEquals(lastName, last);
+		saAssert.assertEquals(lastName, headerName);
+		saAssert.assertAll();
+		UtilityClassObject.getTest().log(Status.PASS, "Passed");
+
 	}
 
 }
