@@ -119,10 +119,9 @@ public class CreateContactTest extends BaseClass{
 		String last= cip.getLastNamehead().getText();
 
 		SoftAssert saAssert=new SoftAssert();
-		saAssert.assertEquals(lastName, headerName);
+		saAssert.assertEquals(lastName, "fgh");
 		saAssert.assertAll();
-		UtilityClassObject.getTest().log(Status.PASS, "Passed");
-
+		
 	}
 
 }
