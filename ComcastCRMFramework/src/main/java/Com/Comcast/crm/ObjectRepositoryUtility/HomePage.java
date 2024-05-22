@@ -27,6 +27,8 @@ public class HomePage {
 	private WebElement Campaignslink;
 	@FindBy(linkText = "Products")
 	private WebElement productLink;
+	@FindBy(linkText = "Documents")
+	private WebElement DocumentsLink;
 	
 	public WebElement getProductLink() {
 		return productLink;
