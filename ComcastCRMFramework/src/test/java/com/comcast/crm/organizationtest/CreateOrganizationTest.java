@@ -38,6 +38,7 @@ public class CreateOrganizationTest extends BaseClass{
 		boolean status= header.contains(orgName);
 		SoftAssert sa=new SoftAssert();
 		sa.assertEquals(status, false);
+		sa.assertAll();
 		UtilityClassObject.getTest().log(Status.PASS, "Passed");
 		
 		
