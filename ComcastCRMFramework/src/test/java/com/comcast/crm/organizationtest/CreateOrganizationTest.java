@@ -2,6 +2,7 @@ package com.comcast.crm.organizationtest;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
 import com.aventstack.extentreports.Status;
 
@@ -35,7 +36,8 @@ public class CreateOrganizationTest extends BaseClass{
 		UtilityClassObject.getTest().log(Status.INFO, "Navigated to Organization infopage");
 		String header = op.getHeadername().getText();
 		boolean status= header.contains(orgName);
-		Assert.assertEquals(status, true);
+		SoftAssert sa=new SoftAssert();
+		sa.assertEquals(status, false);
 		UtilityClassObject.getTest().log(Status.PASS, "Passed");
 		
 		

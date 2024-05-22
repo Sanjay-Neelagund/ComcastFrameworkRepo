@@ -4,7 +4,7 @@
 <listeners>
 <listener class-name="Com.Comcast.crm.listenerutility.ListenerImplementclass"></listener>
 </listeners>
-  <test name="Test">
+  <test name="Test1">
     <classes>
       <class name="com.comcast.crm.organizationtest.CreateOrganizationTest"/>
     </classes>
