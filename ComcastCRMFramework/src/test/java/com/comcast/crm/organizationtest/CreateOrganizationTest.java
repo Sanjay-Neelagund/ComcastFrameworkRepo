@@ -37,7 +37,7 @@ public class CreateOrganizationTest extends BaseClass{
 		String header = op.getHeadername().getText();
 		boolean status= header.contains(orgName);
 		SoftAssert sa=new SoftAssert();
-		sa.assertEquals(status, false);
+		sa.assertEquals(status, true);
 		sa.assertAll();
 		UtilityClassObject.getTest().log(Status.PASS, "Passed");
 		
@@ -81,6 +81,6 @@ public class CreateOrganizationTest extends BaseClass{
 		CreateNewOrganizationPage cp = new CreateNewOrganizationPage(driver);
 		cp.createOrg(orgName,phone);
 		String header = oip.getPhonemsg().getText();
-		Assert.assertEquals(header, orgName);
+		Assert.assertEquals(header,phone);
 		UtilityClassObject.getTest().log(Status.PASS, "Create organization with phone was created");	}
 }

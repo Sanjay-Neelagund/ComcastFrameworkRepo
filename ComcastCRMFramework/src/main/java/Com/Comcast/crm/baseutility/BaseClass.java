@@ -39,8 +39,8 @@ public class BaseClass{
 	@BeforeClass
 	public void configBC() throws Throwable {
 		//String browser = browser1;
-		String browser=flib.getDataFromPropertyFile("Browser");
-		String url=flib.getDataFromPropertyFile("URL");
+		String browser= System.getProperty("Browser", flib.getDataFromPropertyFile("Browser"));
+		String url=System.getProperty("URL",flib.getDataFromPropertyFile("URL"));
 		System.out.println(browser);
 		if (browser.equals("chrome")) {
 			driver=new ChromeDriver();
@@ -64,8 +64,8 @@ public class BaseClass{
 	@BeforeMethod(groups = {"RegressionSuite","SmokeTesting"})
 	public void configBM() throws Throwable {
 		LoginPage lp=new LoginPage(driver);
-		String un=flib.getDataFromPropertyFile("UserName");
-		String psw=flib.getDataFromPropertyFile("Password");
+		String un= System.getProperty("UserName",flib.getDataFromPropertyFile("UserName"));
+		String psw=System.getProperty("Password",flib.getDataFromPropertyFile("Password"));
 		
 		lp.loginToApp(un,psw);
 

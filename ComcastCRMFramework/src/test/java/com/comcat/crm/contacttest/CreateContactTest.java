@@ -119,7 +119,7 @@ public class CreateContactTest extends BaseClass{
 		String last= cip.getLastNamehead().getText();
 
 		SoftAssert saAssert=new SoftAssert();
-		saAssert.assertEquals(lastName, "fgh");
+		saAssert.assertEquals(lastName, last);
 		saAssert.assertAll();
 		
 	}
